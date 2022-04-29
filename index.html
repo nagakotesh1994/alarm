@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    .bg{
+      width: 1000px;
+      /* height: 500px; */
+      background-color: #323233;
+      margin: 0px auto;
+      border: 10px outset #252526;
+    }
+
+    .text{
+      font-family: 'Orbitron', sans-serif;
+      color: white;
+      font-size: 100px;
+      text-align: center;
+      padding: 25px 25px;
+    }
+    audio{
+      display: none;
+    }
+    .settime{
+      display: block;
+      width: 250px;
+      height: 50px;
+      margin: 0px auto;
+      font-size: 30px;
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg">
+    <p class="text" id="time">15:32</p>
+  </div><br>
+  <input type="text" id="alermtime" class="settime">
+  <audio controls id="audiotag">
+    <source src="sounds/alarm.mp3">
+  </audio>
+  
+  <script>
+    setInterval(fun, 100);
+    function fun(){
+      var d = new Date()
+      var timestr = d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+      document.getElementById('time').innerHTML = timestr;
+      var at = document.getElementById('alermtime').value;
+      if(at==timestr)
+      {
+        document.getElementById('audiotag').play();  
+        document.getElementById('alermtime').style.border='5px solid red';
+        document.getElementById('alermtime').style.color='red';
+      }
+    }
+  </script>
+</body>
+</html>
